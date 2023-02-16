@@ -22,7 +22,7 @@ class BlogPost(models.Model):
     body = models.TextField()
 
     def get_absolute_url(self):
-        return reverse("blog-post", args=[str(self.id)])
+        return reverse("post-detail", args=[str(self.id)])
 
     def __str__(self):
         return self.title
@@ -48,7 +48,7 @@ class Blogger(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse("blogger", args=[str(self.id)])
+        return reverse("blogger-detail", args=[str(self.id)])
 
     def __str__(self):
         return self.name

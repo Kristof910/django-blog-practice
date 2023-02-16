@@ -1,0 +1,21 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<h1>Title: {{ post.title }}</h1>
+
+<p><strong>Author:</strong> <a href="">{{ post.author }}</a></p> <!-- author detail link not yet defined -->
+<p><strong>Date:</strong> {{ post.date }}</p>
+<p><strong>Post:</strong>
+<p>{{ post.body }}</p>
+</p>
+
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Comments:</h4>
+
+    {% for comment in comments %}
+    <hr>
+    <p><strong>User:</strong> {{ comment.user }}</p>
+    <p><strong>Comment:</strong> {{ comment.comment }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
