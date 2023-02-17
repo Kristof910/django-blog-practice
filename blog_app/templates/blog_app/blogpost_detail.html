@@ -3,7 +3,8 @@
 {% block content %}
 <h1>Title: {{ post.title }}</h1>
 
-<p><strong>Author:</strong> <a href="">{{ post.author }}</a></p> <!-- author detail link not yet defined -->
+<!-- author detail link not yet defined -->
+<p><strong>Author:</strong> <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a></p>
 <p><strong>Date:</strong> {{ post.date }}</p>
 <p><strong>Post:</strong>
 <p>{{ post.body }}</p>
@@ -14,8 +15,14 @@
 
     {% for comment in comments %}
     <hr>
-    <p><strong>User:</strong> {{ comment.user }}</p>
+    <p><strong>User:</strong> {{ comment.user }} </p>
+    <p><strong>Date:</strong> {{ comment.date }} </p>
     <p><strong>Comment:</strong> {{ comment.comment }}</p>
     {% endfor %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'add-comment' post.id %}">Click here to add a comment as: {{ user.username }}</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login to comment</a>
+    {% endif %}
 </div>
 {% endblock %}

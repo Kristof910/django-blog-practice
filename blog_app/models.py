@@ -33,6 +33,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     blog_post = models.ForeignKey("BlogPost", on_delete=models.RESTRICT)
+    date = models.DateField(default=datetime.date.today)
 
     def get_absolute_url(self):
         return reverse("comment", args=[str(self.id)])
@@ -46,6 +47,9 @@ class Blogger(models.Model):
     description = models.TextField()
     # this will identify which user is the blogger
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        permissions = (("is_blogger", "Blogger Permission"),)
 
     def get_absolute_url(self):
         return reverse("blogger-detail", args=[str(self.id)])

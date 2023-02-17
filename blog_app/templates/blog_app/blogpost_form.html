@@ -1,0 +1,10 @@
+{% extends 'skeleton.html' %}
+
+{% block content %}
+<h2>Add Post:</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Post</button>
+</form>
+{% endblock %}

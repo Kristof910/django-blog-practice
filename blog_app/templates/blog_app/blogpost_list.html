@@ -6,7 +6,7 @@
 <ul>
     {% for post in blogpost_list %}
     <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> ({{post.author}})
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> ({{ post.date }}) - Author: {{ post.author }}
     </li>
     {% endfor %}
 </ul>

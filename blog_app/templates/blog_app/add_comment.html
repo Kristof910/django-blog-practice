@@ -1,0 +1,12 @@
+{% extends 'skeleton.html' %}
+
+{% block content %}
+<h2>Add comment for the post: {{ post.title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.comment }}
+    </div>
+    <button type="submit">Add Comment</button>
+</form>
+{% endblock %}
